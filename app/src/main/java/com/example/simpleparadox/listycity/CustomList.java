@@ -29,7 +29,7 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     public void addCity(City city) {
-        return;
+        cities.add(city);
     }
 
     @NonNull
