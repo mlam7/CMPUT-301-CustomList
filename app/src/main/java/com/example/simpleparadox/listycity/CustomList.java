@@ -15,7 +15,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class CustomList extends ArrayAdapter<City> {
-
     private ArrayList<City> cities;
     private Context context;
 
@@ -25,6 +24,13 @@ public class CustomList extends ArrayAdapter<City> {
         this.context = context;
     }
 
+    public int getCount() {
+        return cities.size();
+    }
+
+    public void addCity(City city) {
+        return;
+    }
 
     @NonNull
     @Override
