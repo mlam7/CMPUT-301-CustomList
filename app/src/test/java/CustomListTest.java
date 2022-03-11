@@ -1,19 +1,17 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import com.example.simpleparadox.listycity.City;
 import com.example.simpleparadox.listycity.CustomList;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 public class CustomListTest {
     private CustomList list;
 
-    @Before
+    @BeforeEach
     public void createList() {
         list = new CustomList(null, new ArrayList<City>());
     }
@@ -23,6 +21,21 @@ public class CustomListTest {
         int listSize = list.getCount();
         list.addCity(new City("Edmonton", "AB"));
         assertEquals(listSize+1, list.getCount());
+    }
+
+    @Test
+    public void deleteTest() {
+        City city = new City("Toronto", "ON");
+        list.addCity(city);
+        list.delete(city);
+        assertEquals(0, list.getCount());
+    }
+
+    @Test
+    public void deleteExceptionTest() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            list.delete(new City("Regina", "SK"));
+        });
     }
 
     @Test
